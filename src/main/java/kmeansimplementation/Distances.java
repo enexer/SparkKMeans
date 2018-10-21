@@ -8,13 +8,6 @@ import org.apache.spark.ml.linalg.Vector;
  */
 public class Distances {
 
-    /**
-     * Odleglosc Kwadratowa.
-     *
-     * @param t1 tablica atrybutów 1
-     * @param t2 tablica atrybutów 2
-     * @return
-     */
     public static double distanceSquared(double[] t1, double[] t2) {
         double distance = 0.0;
         int size = t1.length;
@@ -25,13 +18,6 @@ public class Distances {
         return distance;
     }
 
-    /**
-     * Odleglosc Euklidesowa.
-     *
-     * @param t1 tablica atrybutów 1
-     * @param t2 tablica atrybutów 2
-     * @return
-     */
     public static double distanceEuclidean(double[] t1, double[] t2) {
         double sum = 0;
         for (int i = 0; i < t1.length; i++) {
@@ -40,13 +26,6 @@ public class Distances {
         return Math.sqrt(sum);
     }
 
-    /**
-     * Odleglosc Miejska, (manhattan).
-     *
-     * @param t1 tablica atrybutów 1
-     * @param t2 tablica atrybutów 2
-     * @return
-     */
     public static double distanceManhattan(double[] t1, double[] t2) {
         double sum = 0;
         for (int i = 0; i < t1.length; i++) {
@@ -55,13 +34,6 @@ public class Distances {
         return sum;
     }
 
-    /**
-     * Odleglosc Czybyszewa.
-     *
-     * @param t1 tablica atrybutów 1
-     * @param t2 tablica atrybutów 2
-     * @return
-     */
     public static double distanceChebyshev(double[] t1, double[] t2) {
         double max = Math.abs(t1[0] - t2[0]);
         for (int i = 1; i < t1.length; i++) {
