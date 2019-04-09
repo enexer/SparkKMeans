@@ -20,9 +20,9 @@ import java.util.Arrays;
 public class Util {
 
     /**
-     * Konwersja z Dataset na JavaRDD.
+     * Conversion Dataframe to JavaRDD.
      *
-     * @param ds dane RDD
+     * @param ds data RDD
      * @return
      */
     public static JavaRDD<DataModel> DatasetToRDD(Dataset<Row> ds) {
@@ -35,13 +35,13 @@ public class Util {
     }
 
     /**
-     * Konwersja z JavaRDD na Dataset.
+     * Conversion JavaRDD to Dataframe
      *
-     * @param x dane RDD
-     * @param spark obiekt SparkSession
-     * @param featuresCol nazwa kolumny atrybutow
-     * @param predictionCol nazwa kolumny predykcji
-     * @return dane Dataset
+     * @param x data RDD
+     * @param spark object SparkSession
+     * @param featuresCol attribute col name
+     * @param predictionCol prediction col name
+     * @return data Dataset
      */
     public static Dataset<Row> RDDToDataset(JavaPairRDD<Integer, Vector> x, SparkSession spark, String featuresCol, String predictionCol) {
         JavaRDD<Row> ss = x.map(v1 -> RowFactory.create(v1._2(), v1._1()));
@@ -54,12 +54,12 @@ public class Util {
     }
 
     /**
-     * Zapis Dataset do pliku CSV.
+     * Write Dataframe to CSV.
      *
-     * @param dm dane Dataset
-     * @param featuresCol nazwa kolumny z atrybutami
-     * @param predictionCol nazwa kolumny z predykcjami
-     * @param path sciezka zapisu pliku
+     * @param dm data Dataset
+     * @param featuresCol attribute col name
+     * @param predictionCol  prediction col name
+     * @param path file path
      */
     public static void saveAsCSV(Dataset<Row> dm, String featuresCol, String predictionCol, String path) {
         JavaRDD<Row> rr = dm.select(featuresCol, predictionCol).toJavaRDD().map(value -> {
